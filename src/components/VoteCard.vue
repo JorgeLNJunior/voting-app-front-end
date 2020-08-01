@@ -4,7 +4,7 @@
       <v-card-text class="text-center">
         <p class="body-2 mt-4">
           Enquete para saber a preferência de framework front-end
-          por parte dos desenvolvedores
+          por parte dos desenvolvedores.
         </p>
         <v-row justify="center" align="center">
           <v-col cols="4"></v-col> <!--Coluna gambiarra-->
@@ -16,7 +16,8 @@
           </v-col>
           <v-col cols="4"></v-col> <!--Coluna gambiarra-->
           <v-col cols="12" md="5" sm="7" xm="9">
-            <v-btn color="primary" block>Votar</v-btn>
+            <p>Selecione somente uma opção</p>
+            <v-btn color="primary" block rounded>Votar</v-btn>
           </v-col>
         </v-row>
       </v-card-text>
