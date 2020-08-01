@@ -17,7 +17,7 @@
           <v-col cols="4"></v-col> <!--Coluna gambiarra-->
           <v-col cols="12" md="5" sm="7" xm="9">
             <p>Selecione somente uma opção</p>
-            <v-btn color="primary" block rounded>Votar</v-btn>
+            <v-btn color="primary" block rounded :click="vote()">Votar</v-btn>
           </v-col>
         </v-row>
       </v-card-text>
