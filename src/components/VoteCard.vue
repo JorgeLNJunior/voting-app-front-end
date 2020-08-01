@@ -6,12 +6,17 @@
           Enquete para saber a preferência de framework front-end
           por parte dos desenvolvedores
         </p>
-        <v-row justify="center">
-          <v-col cols="12" md="4">
+        <v-row justify="center" align="center">
+          <v-col cols="4"></v-col> <!--Coluna gambiarra-->
+          <v-col cols="4" md="2" sm="2" xm="2">
             <v-switch v-for="option in options" :key="option.id" :label="option.name"
               v-model="option.selected" :readonly="!option.ableToSelect"
               v-on:change="disableSelection(option.id)" hide-details>
             </v-switch>
+          </v-col>
+          <v-col cols="4"></v-col> <!--Coluna gambiarra-->
+          <v-col cols="12" md="5" sm="7" xm="9">
+            <v-btn color="primary" block>Votar</v-btn>
           </v-col>
         </v-row>
       </v-card-text>
@@ -37,6 +42,10 @@ export default {
           option.ableToSelect = !option.ableToSelect
         }
       })
+    },
+
+    vote () {
+
     }
   }
 }
