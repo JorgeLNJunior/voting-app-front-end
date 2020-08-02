@@ -31,7 +31,7 @@
       <div v-show="show">
         <v-divider></v-divider>
         <v-card-text>
-          <div class="text-right" @click="show = false">
+          <div class="text-center" @click="show = false">
             <v-btn icon>
               <v-icon>expand_less</v-icon>
             </v-btn>
