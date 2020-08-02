@@ -1,24 +1,15 @@
-# voting-app-frontend
+# Voting APP
 
-## Project setup
-```
-npm install
-```
+Aplicação feita com base no [Voting App](https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Voting-App.md)
+do repositório [app-ideas](https://github.com/florinpop17/app-ideas)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## User Stories
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- [ ] User can see a list of items he can vote on
+- [ ] These items must have a button that the user can click on to vote
+- [ ] After the user clicked a button, the user should see all the votes
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Bonus features
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [ ] Store items and votes in a database
+- [ ] Only allow authenticated users to vote
