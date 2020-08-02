@@ -81,6 +81,9 @@ export default {
       })
       await this.sortOptions()
       this.show = true
+      this.options.forEach(option => {
+        option.ableToSelect = false
+      })
       this.voted = true
     },
 
