@@ -1,4 +1,4 @@
-# Voting APP
+<h1 align="center">Voting APP</h1>
 
 Aplicação feita com base no [Voting App](https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Voting-App.md)
 do repositório [app-ideas](https://github.com/florinpop17/app-ideas)
