@@ -48,6 +48,9 @@
 </template>
 
 <script>
+
+import SurveyService from '../services/SurveyService'
+
 export default {
   name: 'VoteCard',
   data: () => ({
@@ -89,12 +92,27 @@ export default {
       })
     },
 
+    getSelectedOption () {
+      for (var option of this.survey.options) {
+        if (option.selected) {
+          return option
+        }
+      }
+    },
+
     async vote () {
       this.addVoteToSelectedOption()
       await this.sortOptions()
-      this.show = true
       this.disableAllOptions()
-      this.voted = true
+      const selectedOption = this.getSelectedOption()
+      try {
+        await SurveyService
+          .vote(this.survey.id, selectedOption.id)
+        this.show = true
+        this.voted = true
+      } catch (error) {
+        console.log(error)
+      }
     },
 
     async sortOptions () {
