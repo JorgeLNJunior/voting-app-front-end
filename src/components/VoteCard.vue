@@ -1,15 +1,14 @@
 <template>
   <v-card shaped>
-    <v-card-title class="justify-center primary">Front-end framework</v-card-title>
+    <v-card-title class="justify-center primary">{{ survey.title }}</v-card-title>
     <v-card-text class="text-center">
       <p class="body-2 mt-4">
-        Enquete para saber a preferência de framework front-end
-        por parte dos desenvolvedores.
+        {{ survey.description }}
       </p>
       <v-row justify="center" align="center">
         <v-col cols="4"></v-col> <!--Coluna gambiarra-->
         <v-col cols="4" md="2" sm="2" xm="2">
-          <v-switch v-for="option in options" :key="option.id" :label="option.name"
+          <v-switch v-for="option in survey.options" :key="option.id" :label="option.name"
             v-model="option.selected" :readonly="!option.ableToSelect"
             v-on:change="disableSelection(option.id)" hide-details>
           </v-switch>
@@ -49,23 +48,29 @@
 </template>
 
 <script>
+
+import SurveyService from '../services/SurveyService'
+
 export default {
   name: 'VoteCard',
   data: () => ({
-    options: [
-      { id: 1, name: 'Angular', votes: 0, selected: false, ableToSelect: true },
-      { id: 2, name: 'React', votes: 0, selected: false, ableToSelect: true },
-      { id: 3, name: 'Vue', votes: 0, selected: false, ableToSelect: true },
-      { id: 4, name: 'Outro', votes: 0, selected: false, ableToSelect: true }
-    ],
     sortedOptions: [],
     show: false,
     disableBlockBtn: true,
     voted: false
   }),
+  props: {
+    survey: Object
+  },
+  created () {
+    this.survey.options.forEach(option => {
+      option.selected = false
+      option.ableToSelect = true
+    })
+  },
   methods: {
     disableSelection (inputID) {
-      this.options.forEach(option => {
+      this.survey.options.forEach(option => {
         if (option.id !== inputID) {
           option.ableToSelect = !option.ableToSelect
           this.disableBlockBtn = !this.disableBlockBtn
@@ -73,22 +78,45 @@ export default {
       })
     },
 
-    async vote () {
-      this.options.forEach(option => {
+    disableAllOptions () {
+      this.survey.options.forEach(option => {
+        option.ableToSelect = false
+      })
+    },
+
+    addVoteToSelectedOption () {
+      this.survey.options.forEach(option => {
         if (option.selected) {
           option.votes++
         }
       })
+    },
+
+    getSelectedOption () {
+      for (var option of this.survey.options) {
+        if (option.selected) {
+          return option
+        }
+      }
+    },
+
+    async vote () {
+      this.addVoteToSelectedOption()
       await this.sortOptions()
-      this.show = true
-      this.options.forEach(option => {
-        option.ableToSelect = false
-      })
-      this.voted = true
+      this.disableAllOptions()
+      const selectedOption = this.getSelectedOption()
+      try {
+        await SurveyService
+          .vote(this.survey.id, selectedOption.id)
+        this.show = true
+        this.voted = true
+      } catch (error) {
+        console.log(error)
+      }
     },
 
     async sortOptions () {
-      this.sortedOptions = this.options.slice() // fazendo cópia sem referência
+      this.sortedOptions = this.survey.options.slice() // fazendo cópia sem referência
       await this.sortedOptions.sort((a, b) => { return b.votes - a.votes })
     }
   }
