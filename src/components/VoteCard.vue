@@ -1,10 +1,10 @@
 <template>
   <v-card shaped>
-    <v-snackbar shaped top v-model="error" timeout="3000">
-      Desculpe, ocorreu um erro
-    </v-snackbar>
     <v-card-title class="justify-center primary">{{ survey.title }}</v-card-title>
     <v-card-text class="text-center">
+      <v-snackbar shaped top v-model="error" timeout="3000">
+        Desculpe, ocorreu um erro...
+      </v-snackbar>
       <p class="body-2 mt-4">
         {{ survey.description }}
       </p>
