@@ -16,7 +16,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-footer class="transparent" app padless>
+    <v-footer color="#121212" padless>
       <v-col class="text-center">
         <div class="caption">
           Icons made by
