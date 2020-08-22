@@ -17,7 +17,7 @@
         <v-col cols="12" md="5" sm="7" xm="9">
           <p>Selecione somente uma opção</p>
           <v-btn color="primary" block rounded
-            @click="vote()" :disabled="disableBlockBtn || voted">
+            @click="vote()" :disabled="disableBlockBtn || voted" :loading="btnLoading">
             Votar
           </v-btn>
           <v-btn icon class="mt-3" v-show="voted && !show" @click="show = true">
@@ -57,6 +57,7 @@ export default {
     sortedOptions: [],
     show: false,
     disableBlockBtn: true,
+    btnLoading: false,
     voted: false
   }),
   props: {
@@ -101,6 +102,7 @@ export default {
     },
 
     async vote () {
+      this.btnLoading = true
       this.addVoteToSelectedOption()
       await this.sortOptions()
       this.disableAllOptions()
@@ -113,6 +115,7 @@ export default {
       } catch (error) {
         console.log(error)
       }
+      this.btnLoading = false
     },
 
     async sortOptions () {
