@@ -30,7 +30,7 @@
 <script>
 export default {
   data: () => ({
-    svg: require('../assets/error404.svg')
+    svg: require('../../assets/errors/error404.svg')
   })
 }
 </script>
