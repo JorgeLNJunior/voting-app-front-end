@@ -32,6 +32,7 @@ export default {
         this.apiCallEnded = true
       })
       .catch((error) => {
+        this.$router.push('/error')
         console.log(error)
       })
   },
