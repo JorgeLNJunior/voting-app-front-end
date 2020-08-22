@@ -1,5 +1,8 @@
 <template>
   <v-card shaped>
+    <v-snackbar shaped top v-model="error" timeout="3000">
+      Desculpe, ocorreu um erro
+    </v-snackbar>
     <v-card-title class="justify-center primary">{{ survey.title }}</v-card-title>
     <v-card-text class="text-center">
       <p class="body-2 mt-4">
@@ -58,7 +61,8 @@ export default {
     show: false,
     disableBlockBtn: true,
     btnLoading: false,
-    voted: false
+    voted: false,
+    error: false
   }),
   props: {
     survey: Object
@@ -113,6 +117,7 @@ export default {
         this.show = true
         this.voted = true
       } catch (error) {
+        this.error = true
         console.log(error)
       }
       this.btnLoading = false
