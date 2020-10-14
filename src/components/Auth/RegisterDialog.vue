@@ -1,5 +1,5 @@
 <template>
-  <v-dialog width="600">
+  <v-dialog width="600" origin="top" overlay-opacity="0.6">
     <template v-slot:activator="{ on, attrs }">
       <v-btn class="hidden-sm-and-down" color="primary" v-bind="attrs" v-on="on">
         Criar uma conta
