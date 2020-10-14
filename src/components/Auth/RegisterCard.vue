@@ -13,7 +13,7 @@
     <v-card-actions>
       <v-row justify="center" no-gutters>
         <v-col cols="3">
-          <v-btn color="primary" right @click="register()" :loading="states.registerBtnLoad">Criar Conta</v-btn>
+          <v-btn class="mb-5" color="primary" right @click="register()" :loading="states.registerBtnLoad">Criar Conta</v-btn>
         </v-col>
       </v-row>
     </v-card-actions>
