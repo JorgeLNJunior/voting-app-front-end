@@ -52,7 +52,7 @@
 
 <script>
 
-import SurveyService from '../services/SurveyService'
+import Survey from '../services/api/Survey'
 
 export default {
   name: 'VoteCard',
@@ -112,7 +112,7 @@ export default {
       this.disableAllOptions()
       const selectedOption = this.getSelectedOption()
       try {
-        await SurveyService
+        await Survey
           .vote(this.survey.id, selectedOption.id)
         this.show = true
         this.voted = true
