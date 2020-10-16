@@ -1,5 +1,6 @@
 <template>
   <v-card shaped>
+    <v-snackbar v-model="states.snackBar" shaped timeout="5000" top elevation="10">{{ states.snackBarMsg }}</v-snackbar>
     <v-card-title>Criar Conta</v-card-title>
     <v-card-text>
       <v-row no-gutters justify="center">
@@ -42,7 +43,9 @@ export default {
     },
     states: {
       registerBtnLoad: false,
-      valid: true
+      valid: true,
+      snackBar: false,
+      snackBarMsg: ''
     },
     rules: {
       name: {
@@ -72,10 +75,12 @@ export default {
       this.states.registerBtnLoad = true
       Auth.register(this.user)
         .then((response) => {
-          console.log(response)
+          this.states.snackBarMsg = 'Conta criada com sucesso'
+          this.states.snackBar = true
         })
         .catch((error) => {
           console.log(error)
+          this.states.snackBarMsg = `Erro: ${error.response.message}`
         })
         .finally(() => {
           this.states.registerBtnLoad = false
