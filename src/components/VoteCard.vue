@@ -1,5 +1,5 @@
 <template>
-  <v-card shaped>
+  <v-card shaped elevation="6">
     <v-card-title class="justify-center primary">{{ survey.title }}</v-card-title>
     <v-card-text class="text-center">
       <v-snackbar shaped top v-model="error" timeout="3000">
