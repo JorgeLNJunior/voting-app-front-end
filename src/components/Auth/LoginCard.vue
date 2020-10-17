@@ -83,10 +83,12 @@ export default {
           if (error.response.data.error === 'unregistered email') {
             this.states.snackBarMsg = 'Email não registrado'
             this.states.snackBar = true
+            return
           }
           if (error.response.data.error === 'invalid credentials ') {
             this.states.snackBarMsg = 'Credenciais inválidas'
             this.states.snackBar = true
+            return
           }
           if (error.response.data.error) {
             this.states.snackBarMsg = 'Erro inesperado'
