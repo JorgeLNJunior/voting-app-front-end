@@ -6,7 +6,10 @@ class Survey {
   }
 
   async vote (surveyID, optionID) {
-    return await http.post(`/surveys/${surveyID}/vote/${optionID}`)
+    const token = localStorage.getItem('AUTH_TOKEN')
+    return await http.post(`/surveys/${surveyID}/vote/${optionID}`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
   }
 }
 

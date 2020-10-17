@@ -16,6 +16,10 @@ class Auth {
       }
     })
   }
+
+  logout () {
+    localStorage.removeItem('AUTH_TOKEN')
+  }
 }
 
 export default new Auth()

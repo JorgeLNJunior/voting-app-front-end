@@ -6,6 +6,7 @@
             <h1>VotingApp</h1>
           </v-list-item-content>
         </v-list-item>
+        <v-divider class="mb-2"/>
         <v-list-item v-if="!isLoged">
           <v-list-item-content>
             <RegisterDialog />
@@ -16,6 +17,11 @@
             <LoginDialog />
           </v-list-item-content>
         </v-list-item>
+        <v-list-item v-if="isLoged">
+          <v-list-item-content>
+            <LogoutBtn />
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 </template>
@@ -24,12 +30,14 @@
 
 import RegisterDialog from './Auth/RegisterDialog'
 import LoginDialog from './Auth/LoginDialog'
+import LogoutBtn from './Auth/LogoutBtn'
 
 export default {
   name: 'NavigationDrawer',
   components: {
     RegisterDialog,
-    LoginDialog
+    LoginDialog,
+    LogoutBtn
   },
   data: () => ({
     isLoged: false
