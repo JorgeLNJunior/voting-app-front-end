@@ -4,7 +4,7 @@
     <h1 class="ml-2">VotingApp</h1>
     <h1></h1>
     <v-spacer></v-spacer>
-    <v-btn class="mr-4 hidden-sm-and-down" outlined @click="logStore()">Entrar</v-btn>
+    <LoginDialog class="mr-4 hidden-sm-and-down"/>
     <RegisterDialog class="hidden-sm-and-down" />
   </v-app-bar>
 </template>
@@ -12,11 +12,13 @@
 <script>
 
 import RegisterDialog from './Auth/RegisterDialog'
+import LoginDialog from './Auth/LoginDialog'
 
 export default {
   name: 'AppBar',
   components: {
-    RegisterDialog
+    RegisterDialog,
+    LoginDialog
   },
   data: () => ({
     //

@@ -1,14 +1,19 @@
 <template>
   <v-navigation-drawer bottom temporary v-model="$store.navigationDrawer" app>
-      <v-list>
+      <v-list class="text-center">
         <v-list-item>
           <v-list-item-content>
-            <h1 class="text-center">VotingApp</h1>
+            <h1>VotingApp</h1>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
-          <v-list-item-content class="text-center">
-            <RegisterDialog></RegisterDialog>
+          <v-list-item-content>
+            <RegisterDialog />
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <LoginDialog />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -18,11 +23,13 @@
 <script>
 
 import RegisterDialog from './Auth/RegisterDialog'
+import LoginDialog from './Auth/LoginDialog'
 
 export default {
   name: 'NavigationDrawer',
   components: {
-    RegisterDialog
+    RegisterDialog,
+    LoginDialog
   }
 }
 </script>
