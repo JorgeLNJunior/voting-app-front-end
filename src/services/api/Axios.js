@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const DEV_URL = 'http://localhost:3000'
+const DEV_URL = 'https://api-voting-app.herokuapp.com'
 const PROD_URL = 'https://api-voting-app.herokuapp.com'
 
 const http = axios.create({
