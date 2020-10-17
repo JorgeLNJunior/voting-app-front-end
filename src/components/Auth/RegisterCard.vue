@@ -4,7 +4,7 @@
     <v-card-title>Criar Conta</v-card-title>
     <v-card-text>
       <v-row no-gutters justify="center">
-        <v-col cols="6">
+        <v-col cols="md-6">
           <v-form ref="form" lazy-validation v-model="states.valid">
             <v-text-field label="Nome" prepend-icon="account_box" v-model="user.name"
               :rules="[rules.name.required, rules.name.max]">
@@ -21,7 +21,7 @@
     </v-card-text>
     <v-card-actions>
       <v-row justify="center" no-gutters>
-        <v-col cols="3">
+        <v-col class="text-center">
           <v-btn class="mb-5" color="primary" right @click="register()" :loading="states.registerBtnLoad" :disabled="!states.valid">Criar Conta</v-btn>
         </v-col>
       </v-row>
