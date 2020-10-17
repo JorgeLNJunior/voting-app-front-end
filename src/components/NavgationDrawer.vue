@@ -6,12 +6,12 @@
             <h1>VotingApp</h1>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
+        <v-list-item v-if="!isLoged">
           <v-list-item-content>
             <RegisterDialog />
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
+        <v-list-item v-if="!isLoged">
           <v-list-item-content>
             <LoginDialog />
           </v-list-item-content>
@@ -30,6 +30,16 @@ export default {
   components: {
     RegisterDialog,
     LoginDialog
+  },
+  data: () => ({
+    isLoged: false
+  }),
+  created () {
+    if (!localStorage.getItem('AUTH_TOKEN')) {
+      this.isLoged = false
+      return
+    }
+    this.isLoged = true
   }
 }
 </script>

@@ -4,8 +4,8 @@
     <h1 class="ml-2">VotingApp</h1>
     <h1></h1>
     <v-spacer></v-spacer>
-    <LoginDialog class="mr-4 hidden-sm-and-down"/>
-    <RegisterDialog class="hidden-sm-and-down" />
+    <LoginDialog class="mr-4 hidden-sm-and-down" v-if="!isLoged" />
+    <RegisterDialog class="hidden-sm-and-down" v-if="!isLoged" />
   </v-app-bar>
 </template>
 
@@ -21,8 +21,15 @@ export default {
     LoginDialog
   },
   data: () => ({
-    //
-  })
+    isLoged: false
+  }),
+  created () {
+    if (!localStorage.getItem('AUTH_TOKEN')) {
+      this.isLoged = false
+      return
+    }
+    this.isLoged = true
+  }
 }
 </script>
 
