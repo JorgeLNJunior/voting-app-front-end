@@ -8,6 +8,14 @@ class Auth {
       }
     })
   }
+
+  async login (data) {
+    return http.post('/login', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  }
 }
 
 export default new Auth()
