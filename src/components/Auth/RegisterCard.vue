@@ -5,7 +5,7 @@
     <v-card-text>
       <v-row no-gutters justify="center">
         <v-col cols="md-6">
-          <v-form ref="form" lazy-validation v-model="states.valid">
+          <v-form ref="form" lazy-validation v-model="states.formIsValid">
             <v-text-field label="Nome" prepend-icon="account_box" v-model="user.name"
               :rules="[rules.name.required, rules.name.max]">
             </v-text-field>
@@ -22,7 +22,7 @@
     <v-card-actions>
       <v-row justify="center" no-gutters>
         <v-col class="text-center">
-          <v-btn class="mb-5" color="primary" right @click="register()" :loading="states.registerBtnLoad" :disabled="!states.valid">Criar Conta</v-btn>
+          <v-btn class="mb-5" color="primary" right @click="register()" :loading="states.registerBtnLoad" :disabled="!states.formIsValid">Criar Conta</v-btn>
         </v-col>
       </v-row>
     </v-card-actions>
@@ -43,7 +43,7 @@ export default {
     },
     states: {
       registerBtnLoad: false,
-      valid: true,
+      formIsValid: true,
       snackBar: false,
       snackBarMsg: ''
     },
