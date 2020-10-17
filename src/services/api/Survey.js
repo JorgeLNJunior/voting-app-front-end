@@ -1,6 +1,6 @@
 import http from './Axios'
 
-class SurveyService {
+class Survey {
   async getByID (id) {
     return await http.get(`/surveys/${id}`)
   }
@@ -10,4 +10,4 @@ class SurveyService {
   }
 }
 
-export default new SurveyService()
+export default new Survey()

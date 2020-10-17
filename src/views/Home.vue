@@ -14,7 +14,7 @@
 <script>
 
 import VoteCard from '../components/VoteCard'
-import SurveyService from '../services/SurveyService'
+import Survey from '../services/api/Survey'
 
 export default {
   name: 'Home',
@@ -26,7 +26,7 @@ export default {
     apiCallEnded: false
   }),
   beforeMount () {
-    SurveyService.getByID(1)
+    Survey.getByID(1)
       .then((response) => {
         this.survey = response.data.survey
         this.apiCallEnded = true
