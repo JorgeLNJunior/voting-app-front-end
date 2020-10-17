@@ -71,8 +71,12 @@ export default {
       Auth.login(this.user)
         .then((response) => {
           localStorage.setItem('AUTH_TOKEN', response.data.token)
-          this.states.snackBarMsg = 'Login efetuado com sucesso'
+          this.states.snackBarMsg = 'Login efetuado com sucesso você será redirecionado em 5 segundos'
           this.states.snackBar = true
+          var self = this
+          setTimeout(function () {
+            self.$router.go(0)
+          }, 5000)
         })
         .catch((error) => {
           console.log(error)
