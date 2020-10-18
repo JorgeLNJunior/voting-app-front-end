@@ -6,6 +6,7 @@
     <v-spacer></v-spacer>
     <LoginDialog class="mr-4 hidden-sm-and-down" v-if="!isLoged" />
     <RegisterDialog class="hidden-sm-and-down" v-if="!isLoged" />
+    <SurveyCreateDialog class="hidden-sm-and-down" v-if="isLoged" />
   </v-app-bar>
 </template>
 
@@ -13,12 +14,14 @@
 
 import RegisterDialog from './Auth/RegisterDialog'
 import LoginDialog from './Auth/LoginDialog'
+import SurveyCreateDialog from './Survey/SurveyCreateDialog'
 
 export default {
   name: 'AppBar',
   components: {
     RegisterDialog,
-    LoginDialog
+    LoginDialog,
+    SurveyCreateDialog
   },
   data: () => ({
     isLoged: false
