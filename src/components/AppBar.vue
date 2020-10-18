@@ -6,7 +6,7 @@
     <v-spacer></v-spacer>
     <LoginDialog class="mr-4 hidden-sm-and-down" v-if="!isLoged" />
     <RegisterDialog class="hidden-sm-and-down" v-if="!isLoged" />
-    <SurveyCreateDialog class="hidden-sm-and-down" v-if="isLoged" />
+    <SurveyCreateDialog class="hidden-sm-and-down mr-2" v-if="isLoged" />
   </v-app-bar>
 </template>
 
