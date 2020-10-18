@@ -1,7 +1,34 @@
-<h1 align="center">Voting APP</h1>
+<div align="center">
+  <img src="https://i.imgur.com/cldg8Ie.png"></img>
+</div>
+
+</div>
+
+<div align="center">
+
+[![License](https://img.shields.io/github/license/JorgeLNJunior/voting-app-front-end)](https://github.com/JorgeLNJunior/voting-app-front-end/blob/master/LICENSE.md)
+[![Release](https://img.shields.io/github/v/release/JorgeLNJunior/voting-app-front-end?color=lgreen)](https://github.com/JorgeLNJunior/voting-app-front-end/releases)
+
+</div>
+
+<div align="center">
+
+[Frontend](https://github.com/JorgeLNJunior/voting-app-front-end/) | [Backend](https://github.com/JorgeLNJunior/voting-app-back-end/)
+
+</div>
+
+<div align="center">
 
 Aplicação feita com base no [Voting App](https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Voting-App.md)
-do repositório [app-ideas](https://github.com/florinpop17/app-ideas)
+do repositório [app-ideas](https://github.com/florinpop17/app-ideas). Para mais informações acesse o seu respectivo [quadro trello](https://trello.com/b/YacYdWhy/voting-app).
+
+</div>
+
+## Tecnologias
+- A fazer
+
+## Instalação e configuração
+- A fazer
 
 ## User Stories
 
@@ -11,6 +38,6 @@ do repositório [app-ideas](https://github.com/florinpop17/app-ideas)
 
 ## Bonus features
 
-- [ ] Store items and votes in a database
-- [ ] Only allow authenticated users to vote
+- [x] Store items and votes in a database
+- [x] Only allow authenticated users to vote
  
