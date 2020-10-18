@@ -11,6 +11,13 @@ class Survey {
       headers: { Authorization: `Bearer ${token}` }
     })
   }
+
+  async create (data) {
+    const token = localStorage.getItem('AUTH_TOKEN')
+    return await http.post('/surveys', data, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  }
 }
 
 export default new Survey()
