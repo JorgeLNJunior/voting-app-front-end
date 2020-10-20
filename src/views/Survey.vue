@@ -3,7 +3,7 @@
     <v-container fluid class="fill-height">
       <v-row align="center" justify="center">
         <v-col cols="12" md="6" sm="8" xs="10">
-          <VoteCard v-if="apiCallEnded" :survey="survey"></VoteCard>
+          <VoteCard v-if="apiCallEnded" :survey="surveys[0]"></VoteCard>
           <v-skeleton-loader v-else type="card"></v-skeleton-loader>
         </v-col>
       </v-row>
@@ -22,14 +22,14 @@ export default {
     VoteCard
   },
   data: () => ({
-    survey: {},
+    surveys: [],
     apiCallEnded: false
   }),
   created () {
     const id = this.$route.params.id
     Survey.getByID(id)
       .then((response) => {
-        this.survey = response.data.survey
+        this.surveys = response.data.surveys
         this.apiCallEnded = true
       })
       .catch((error) => {

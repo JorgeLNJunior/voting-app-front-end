@@ -105,10 +105,9 @@ export default {
       this.states.submitBtnLoad = true
       Survey.create(this.survey)
         .then((response) => {
-          console.log(response.data)
           this.responseData = response.data
 
-          this.states.snackBarMsg = 'Pesquisa criada com sucesso'
+          this.states.snackBarMsg = 'Enquete criada com sucesso'
           this.states.snackBar = true
 
           this.states.destroyCard = true

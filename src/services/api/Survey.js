@@ -2,7 +2,7 @@ import http from './Axios'
 
 class Survey {
   async getByID (id) {
-    return await http.get(`/surveys/${id}`)
+    return await http.get(`/surveys?id=${id}`)
   }
 
   async vote (surveyID, optionID) {
