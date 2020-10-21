@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card v-if="states.destroyCard"> <!-- Survey Url Card -->
+    <v-card v-if="states.destroyCard" shaped> <!-- Survey Url Card -->
       <v-card-title class="justify-center">Compartilhar</v-card-title>
       <v-card-text>
         <v-row justify="center" no-gutters>
@@ -12,9 +12,9 @@
         </v-row>
       </v-card-text>
     </v-card>
-    <v-card v-if="!states.destroyCard"> <!-- Survey Create Card -->
+    <v-card v-if="!states.destroyCard" shaped> <!-- Survey Create Card -->
       <v-snackbar v-model="states.snackBar" shaped timeout="5000" top elevation="10">{{ states.snackBarMsg }}</v-snackbar>
-      <v-card-title class="justify-center">Nova Pesquisa</v-card-title>
+      <v-card-title class="justify-center">Nova Enquete</v-card-title>
       <v-card-text>
         <v-form ref="form" lazy-validation v-model="states.formIsValid">
           <v-row justify="center" no-gutters>
