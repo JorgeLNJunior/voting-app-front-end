@@ -5,7 +5,7 @@
       <v-divider></v-divider>
       <v-card-text>
         <v-list v-if="userSurveys.length > 0">
-          <v-list-group v-for="(s, i) in userSurveys.slice(0, 15)" :key="s.id" no-action prepend-icon="description">
+          <v-list-group v-for="(s, i) in userSurveys" :key="s.id" no-action prepend-icon="description">
             <template v-slot:activator>
               <v-list-item-content class="justify-center">
                 <v-list-item-title>{{ (i + 1) + ' - ' + s.title }}</v-list-item-title>
