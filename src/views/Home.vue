@@ -1,43 +1,42 @@
 <template>
   <v-main>
     <v-container fluid class="fill-height">
-      <v-row align="center" justify="center">
-        <v-col cols="12" md="6" sm="8" xs="10">
-          <VoteCard v-if="apiCallEnded" :survey="survey"></VoteCard>
-          <v-skeleton-loader v-else type="card"></v-skeleton-loader>
-        </v-col>
-      </v-row>
+      <v-col cols="6">
+        <v-row align="center" justify="center">
+          <v-col cols="12">
+            <UserSurveysCard />
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col cols="6">
+        <v-row justify="center" align="center">
+          <v-col cols="12">
+            <h1>Direita cima</h1>
+          </v-col>
+        </v-row>
+        <v-row justify="center" align="center">
+          <v-col cols="12">
+            <RamdomSurveysCard />
+          </v-col>
+        </v-row>
+      </v-col>
     </v-container>
   </v-main>
 </template>
 
 <script>
 
-import VoteCard from '../components/VoteCard'
-import Survey from '../services/api/Survey'
+import RamdomSurveysCard from '../components/Home/RandomSurveysCard'
+import UserSurveysCard from '../components/Home/UserSurveysCard'
 
 export default {
   name: 'Home',
   components: {
-    VoteCard
+    RamdomSurveysCard,
+    UserSurveysCard
   },
   data: () => ({
-    survey: {},
-    apiCallEnded: false
-  }),
-  beforeMount () {
-    Survey.getByID(1)
-      .then((response) => {
-        this.survey = response.data.survey
-        this.apiCallEnded = true
-      })
-      .catch((error) => {
-        this.$router.push('/error')
-        console.log(error)
-      })
-  },
-  methods: {
-
-  }
+    //
+  })
 }
 </script>
