@@ -7,7 +7,7 @@
             <v-avatar class="mr-4" size="40px">
               <v-img src="https://picsum.photos/200"></v-img>
             </v-avatar>
-            <strong>{{ user.name }}</strong>
+            <strong class="mt-1">{{ user.name }}</strong>
           </v-row>
         </v-col>
         <v-col cols="6" class="pa-0 ma-0">
