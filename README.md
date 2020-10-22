@@ -24,11 +24,25 @@ do repositório [app-ideas](https://github.com/florinpop17/app-ideas). Para mais
 
 </div>
 
+## Screenshots
+- A fazer
+
 ## Tecnologias
 - A fazer
 
 ## Instalação e configuração
-- A fazer
+- Requerimentos
+  - [Node.js](https://nodejs.org/en/download/) na sua versão LTS
+  - [Vue.js](https://vuejs.org/v2/guide/installation.html) na sua versão 2.x
+  - [Servidor da aplicação](https://github.com/JorgeLNJunior/voting-app-back-end/) rodando na porta 3000
+
+- Instalação
+  - Clone o projeto: `git clone https://github.com/JorgeLNJunior/voting-app-front-end.git`
+  - Entre no diretório do projeto: `cd voting-app-front-end`
+  - Abra o projeto no VSCode: `code .`
+  - Instale as dependências: `npm i`
+  - Inicie a aplicação com o comando `npm run serve`
+
 
 ## User Stories
 
