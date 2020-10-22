@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card v-if="states.userSurveysCallEnded" elevation="5" class="mx-auto scroll" height="450" shaped>
+    <v-card v-if="states.userSurveysCallEnded" elevation="5" class="mx-auto scroll" height="600" shaped>
       <v-card-title class="justify-center primary">Suas enquetes</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
