@@ -22,7 +22,7 @@
           <v-col cols="4"></v-col> <!--Coluna gambiarra-->
           <v-col cols="4" md="2" sm="2" xm="2">
             <v-switch v-for="option in survey.options" :key="option.id" :label="option.name"
-              v-model="option.selected" :readonly="!option.ableToSelect"
+              v-model="option.selected" :disabled="!option.ableToSelect"
               v-on:change="disableSelection(option.id)" hide-details>
             </v-switch>
           </v-col>
@@ -89,8 +89,8 @@ export default {
     disableSelection (inputID) {
       this.survey.options.forEach(option => {
         if (option.id !== inputID) {
-          option.ableToSelect = !option.ableToSelect
-          this.disableBlockBtn = !this.disableBlockBtn
+          option.ableToSelect = false
+          this.disableBlockBtn = false
         }
       })
     },
@@ -128,8 +128,7 @@ export default {
       this.disableAllOptions()
       const selectedOption = this.getSelectedOption()
       try {
-        await Survey
-          .vote(this.survey.id, selectedOption.id)
+        await Survey.vote(this.survey.id, selectedOption.id)
         this.show = true
         this.voted = true
       } catch (error) {
