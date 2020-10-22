@@ -7,6 +7,13 @@ class User {
       headers: { Authorization: `Bearer ${token}` }
     })
   }
+
+  async editUser (userId, data) {
+    const token = localStorage.getItem('AUTH_TOKEN')
+    return await http.put(`/users/${userId}`, data, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  }
 }
 
 export default new User()
