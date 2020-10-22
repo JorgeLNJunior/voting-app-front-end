@@ -24,9 +24,6 @@ do repositório [app-ideas](https://github.com/florinpop17/app-ideas). Para mais
 
 </div>
 
-## Screenshots
-- A fazer
-
 ## Tecnologias
 - A fazer
 
@@ -43,6 +40,17 @@ do repositório [app-ideas](https://github.com/florinpop17/app-ideas). Para mais
   - Instale as dependências: `npm i`
   - Inicie a aplicação com o comando `npm run serve`
 
+## Screenshots
+<div>
+
+<img src="https://i.imgur.com/zjmRrgc.png" width="300" />
+<img src="https://i.imgur.com/Sg74jl9.png" width="300" />
+<img src="https://i.imgur.com/2MURzwG.png" width="300" />
+<img src="https://i.imgur.com/Tg9DOrc.png" width="300" />
+<img src="https://i.imgur.com/8NL1xTa.png" width="300" />
+<img src="https://i.imgur.com/EsZqUej.png" width="300" />
+
+</div>
 
 ## User Stories
 
