@@ -1,10 +1,31 @@
 <template>
   <v-main>
     <v-container fluid class="fill-height">
-      <v-row align="center" justify="center">
-        <v-col cols="12" md="6" sm="8" xs="10">
-          <VoteCard v-if="apiCallEnded" :survey="survey"></VoteCard>
-          <v-skeleton-loader v-else type="card"></v-skeleton-loader>
+      <v-row align="start" justify="center" v-if="userIsLoggedIn()"> <!-- authenticated user -->
+        <v-col cols="6">
+          <v-row align="center" justify="center">
+            <v-col>
+              <UserSurveysCard />
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col cols="6">
+          <v-row justify="center" align="center">
+            <v-col cols="12">
+              <RamdomSurveysCard />
+            </v-col>
+          </v-row>
+          <v-row justify="center" align="center">
+            <v-col cols="12">
+              <UserCard />
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+      <v-row v-else align="center" justify="center"> <!-- unauthenticated user -->
+        <v-col cols="8" class="text-center">
+          <h1 class="mb-6">Entre com uma conta para ver suas informações aqui!</h1>
+          <RamdomSurveysCard />
         </v-col>
       </v-row>
     </v-container>
@@ -12,32 +33,27 @@
 </template>
 
 <script>
-
-import VoteCard from '../components/VoteCard'
-import SurveyService from '../services/SurveyService'
+import RamdomSurveysCard from '../components/Home/RandomSurveysCard'
+import UserSurveysCard from '../components/Home/UserSurveysCard'
+import UserCard from '../components/Home/UserCard'
 
 export default {
   name: 'Home',
   components: {
-    VoteCard
+    RamdomSurveysCard,
+    UserSurveysCard,
+    UserCard
   },
   data: () => ({
-    survey: {},
-    apiCallEnded: false
+    //
   }),
-  beforeMount () {
-    SurveyService.getByID(1)
-      .then((response) => {
-        this.survey = response.data.survey
-        this.apiCallEnded = true
-      })
-      .catch((error) => {
-        this.$router.push('/error')
-        console.log(error)
-      })
-  },
   methods: {
-
+    userIsLoggedIn () {
+      if (!localStorage.getItem('AUTH_TOKEN')) {
+        return false
+      }
+      return true
+    }
   }
 }
 </script>
