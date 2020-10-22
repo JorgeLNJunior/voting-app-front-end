@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card v-if="states.destroyCard"> <!-- Survey Url Card -->
+    <v-card v-if="states.destroyCard" shaped> <!-- Survey Url Card -->
       <v-card-title class="justify-center">Compartilhar</v-card-title>
       <v-card-text>
         <v-row justify="center" no-gutters>
@@ -12,9 +12,9 @@
         </v-row>
       </v-card-text>
     </v-card>
-    <v-card v-if="!states.destroyCard"> <!-- Survey Create Card -->
+    <v-card v-if="!states.destroyCard" shaped> <!-- Survey Create Card -->
       <v-snackbar v-model="states.snackBar" shaped timeout="5000" top elevation="10">{{ states.snackBarMsg }}</v-snackbar>
-      <v-card-title class="justify-center">Nova Pesquisa</v-card-title>
+      <v-card-title class="justify-center">Nova Enquete</v-card-title>
       <v-card-text>
         <v-form ref="form" lazy-validation v-model="states.formIsValid">
           <v-row justify="center" no-gutters>
@@ -22,7 +22,9 @@
               <v-text-field label="Título" prepend-icon="title" v-model="survey.title" :rules="[rules.title.required, rules.title.max]"></v-text-field>
               <v-text-field label="Descrição" prepend-icon="description" v-model="survey.description" :rules="[rules.description.required, rules.description.max]">
               </v-text-field>
-              <v-text-field v-model.trim="insertOption.name" label="Opções" prepend-icon="rule" append-icon="add" @click:append="pushOption()" v-on:keyup.enter="pushOption()" :rules="[rules.options.max]">
+              <v-text-field v-model.trim="insertOption.name" label="Opções" hint="Deve haver pelo menos 2 opções"
+                prepend-icon="rule" append-icon="add" @click:append="pushOption()"
+                  v-on:keyup.enter="pushOption()" :rules="[rules.options.max]">
               </v-text-field>
               <v-chip-group v-if="survey.options.length > 0">
                 <v-chip v-for="(option, index) in survey.options" color="primary" :key="index" close @click:close="survey.options.splice(index, 1)" outlined>
@@ -35,7 +37,7 @@
         </v-form>
       </v-card-text>
       <v-card-actions class="justify-center">
-        <v-btn class="mb-5" color="primary" @click="createSurvey()" :loading="states.submitBtnLoad" :disabled="!states.formIsValid || survey.options.length <= 0">
+        <v-btn class="mb-5" color="primary" @click="createSurvey()" :loading="states.submitBtnLoad" :disabled="!states.formIsValid || survey.options.length <= 1">
           Criar
         </v-btn>
       </v-card-actions>
