@@ -22,7 +22,9 @@
               <v-text-field label="Título" prepend-icon="title" v-model="survey.title" :rules="[rules.title.required, rules.title.max]"></v-text-field>
               <v-text-field label="Descrição" prepend-icon="description" v-model="survey.description" :rules="[rules.description.required, rules.description.max]">
               </v-text-field>
-              <v-text-field v-model.trim="insertOption.name" label="Opções" prepend-icon="rule" append-icon="add" @click:append="pushOption()" v-on:keyup.enter="pushOption()" :rules="[rules.options.max]">
+              <v-text-field v-model.trim="insertOption.name" label="Opções" hint="Deve haver pelo menos 2 opções"
+                prepend-icon="rule" append-icon="add" @click:append="pushOption()"
+                  v-on:keyup.enter="pushOption()" :rules="[rules.options.max]">
               </v-text-field>
               <v-chip-group v-if="survey.options.length > 0">
                 <v-chip v-for="(option, index) in survey.options" color="primary" :key="index" close @click:close="survey.options.splice(index, 1)" outlined>
@@ -35,7 +37,7 @@
         </v-form>
       </v-card-text>
       <v-card-actions class="justify-center">
-        <v-btn class="mb-5" color="primary" @click="createSurvey()" :loading="states.submitBtnLoad" :disabled="!states.formIsValid || survey.options.length <= 0">
+        <v-btn class="mb-5" color="primary" @click="createSurvey()" :loading="states.submitBtnLoad" :disabled="!states.formIsValid || survey.options.length <= 1">
           Criar
         </v-btn>
       </v-card-actions>
