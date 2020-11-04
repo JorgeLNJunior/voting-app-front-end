@@ -1,11 +1,12 @@
 <template>
   <div>
+    <v-snackbar timeout="5000" v-model="states.snackBar.active" top app>{{ states.snackBar.msg }}</v-snackbar>
     <v-card v-if="states.userCallEnded">
       <v-card-title>
         <v-col cols="6">
           <v-row justify="start">
             <v-avatar class="mr-4" size="40px">
-              <v-img src="https://picsum.photos/200"></v-img>
+              <v-img :src="user.avatar"></v-img>
             </v-avatar>
             <strong class="mt-1">{{ user.name }}</strong>
           </v-row>
@@ -20,13 +21,16 @@
         <v-card-text>
           <v-row align="center" justify="center">
             <v-col cols="6">
-              <v-text-field label="Nome" v-model="editData.name" :disabled="!states.enableEdit" :rules="[rules.name.max, rules.name.min]">
+              <v-text-field prepend-icon="account_circle" label="Nome" v-model="editData.name"
+                :disabled="!states.enableEdit" :rules="[rules.name.max, rules.name.min]">
               </v-text-field>
-              <v-text-field label="*Email" :value="user.email" disabled></v-text-field>
+              <v-text-field prepend-icon="email" label="*Email" :value="user.email" disabled></v-text-field>
             </v-col>
             <v-col cols="6">
-              <v-text-field label="Senha" disabled value="em breve"></v-text-field>
-              <v-text-field label="Avatar" value="em breve" disabled></v-text-field>
+              <v-text-field prepend-icon="lock" label="Senha" disabled value="em breve"></v-text-field>
+              <v-file-input label="Avatar" :disabled="!states.enableEdit" prepend-icon="add_photo_alternate"
+                v-model="editData.avatar" accept="image/png, image/jpeg, image/jpg"
+                  :rules="[rules.avatar.max]"></v-file-input>
             </v-col>
           </v-row>
         </v-card-text>
@@ -59,17 +63,28 @@ export default {
   name: 'UserCard',
   data: () => ({
     user: {},
-    editData: { name: '' },
+    avatar: undefined,
+    editData: {
+      name: '',
+      avatar: undefined
+    },
     states: {
       userCallEnded: false,
       enableEdit: false,
       formIsValid: true,
-      editBtnLoad: false
+      editBtnLoad: false,
+      snackBar: {
+        active: false,
+        msg: ''
+      }
     },
     rules: {
       name: {
         min: value => value.length >= 3 || 'Deve ter no mínimo 3 caracteres',
         max: value => value.length <= 50 || 'Deve ter no máximo de 40 caracteres'
+      },
+      avatar: {
+        max: value => !value || value.size < 1000000 || 'Deve ter no máximo 1MB'
       }
     }
   }),
@@ -79,19 +94,27 @@ export default {
       const decoded = Decode(token)
       return decoded
     },
-    editUser () {
+    async editUser () {
       if (!this.$refs.form.validate()) {
         return false
       }
+
       const token = this.decodeAuthToken()
+      const data = { name: this.editData.name }
+
+      const promises = []
+      if (this.editData.name !== this.user.name) promises.push(User.editUser(token.uid, data))
+      if (this.editData.avatar) promises.push(User.updateAvatar(token.uid, this.editData.avatar))
+
       this.states.editBtnLoad = true
-      User.editUser(token.uid, this.editData)
-        .then((respose) => {
-          this.$$router.go(0)
-          console.log(respose.data)
+      Promise.all(promises)
+        .then((response) => {
+          this.$router.go(0)
         })
         .catch((error) => {
           console.log(error)
+          this.states.snackBar.msg = 'Desculpe ocorreu um erro'
+          this.states.snackBar.active = true
         })
         .finally(() => {
           this.states.editBtnLoad = false

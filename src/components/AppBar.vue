@@ -1,8 +1,9 @@
 <template>
   <v-app-bar app color="transparent" flat hide-on-scroll>
     <v-app-bar-nav-icon @click="$store.navigationDrawer = !$store.navigationDrawer"></v-app-bar-nav-icon>
-    <h1 class="ml-2">VotingApp</h1>
-    <h1></h1>
+    <router-link to="/" style="text-decoration: none; color: inherit;">
+      <h1 class="ml-2">VotingApp</h1>
+    </router-link>
     <v-spacer></v-spacer>
     <LoginDialog class="mr-4 hidden-sm-and-down" v-if="!isLoged" />
     <RegisterDialog class="hidden-sm-and-down" v-if="!isLoged" />
@@ -35,7 +36,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

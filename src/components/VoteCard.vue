@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-dialog v-model="dialog" width="600">
+    <v-dialog v-model="dialog" width="600"> <!-- Auth warning dialog -->
       <v-card>
         <v-card-title class="justify-center">Autenticação</v-card-title>
         <v-divider></v-divider>
@@ -9,8 +9,10 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-    <v-card shaped elevation="6">
-      <v-card-title class="justify-center primary">{{ survey.title }}</v-card-title>
+    <v-card shaped elevation="6" class="mx-auto"> <!-- Vote card -->
+      <v-img class="align-center" :src="survey.banner" height="80px">
+          <v-card-title class="justify-center">{{ survey.title }}</v-card-title>
+      </v-img>
       <v-card-text class="text-center">
         <v-snackbar shaped top v-model="error" timeout="3000">
           Desculpe, ocorreu um erro...
@@ -19,14 +21,14 @@
           {{ survey.description }}
         </p>
         <v-row justify="center" align="center">
-          <v-col cols="4"></v-col> <!--Coluna gambiarra-->
+          <v-col cols="4"></v-col>
           <v-col cols="4" md="2" sm="2" xm="2">
             <v-switch v-for="option in survey.options" :key="option.id" :label="option.name"
               v-model="option.selected" :disabled="!option.ableToSelect"
               v-on:change="disableSelection(option.id)" hide-details>
             </v-switch>
           </v-col>
-          <v-col cols="4"></v-col> <!--Coluna gambiarra-->
+          <v-col cols="4"></v-col>
           <v-col cols="12" md="5" sm="7" xm="9">
             <p>Selecione somente uma opção</p>
             <v-btn color="primary" block rounded
