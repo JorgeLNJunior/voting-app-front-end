@@ -10,7 +10,7 @@
       </v-card>
     </v-dialog>
     <v-card shaped elevation="6" class="mx-auto"> <!-- Vote card -->
-      <v-img class="align-center" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="80px">
+      <v-img class="align-center" :src="survey.banner" height="80px">
           <v-card-title class="justify-center">{{ survey.title }}</v-card-title>
       </v-img>
       <v-card-text class="text-center">
