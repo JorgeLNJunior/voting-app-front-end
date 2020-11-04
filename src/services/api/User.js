@@ -14,6 +14,18 @@ class User {
       headers: { Authorization: `Bearer ${token}` }
     })
   }
+
+  async updateAvatar (userId, avatar) {
+    const token = localStorage.getItem('AUTH_TOKEN')
+    const formData = new FormData()
+    formData.append('avatar', avatar)
+    return http.post(`/users/${userId}/avatar`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+  }
 }
 
 export default new User()
