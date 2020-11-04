@@ -26,6 +26,18 @@ class Survey {
       headers: { Authorization: `Bearer ${token}` }
     })
   }
+
+  async uploadBanner (surveyId, banner) {
+    const token = localStorage.getItem('AUTH_TOKEN')
+    const formData = new FormData()
+    formData.append('banner', banner)
+    return http.post(`/surveys/${surveyId}/banner`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+  }
 }
 
 export default new Survey()
