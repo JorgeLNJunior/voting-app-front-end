@@ -106,7 +106,7 @@ export default {
     },
     getSurveyUrl () {
       const DEV_URL = 'http://localhost:8080'
-      const PROD_URL = 'https://api-voting-app.herokuapp.com'
+      const PROD_URL = 'https://voting-app-site.netlify.app/'
       const APP_URL =
         process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL
 
