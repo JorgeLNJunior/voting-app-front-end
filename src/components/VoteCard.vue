@@ -10,16 +10,23 @@
       </v-card>
     </v-dialog>
     <v-card shaped elevation="6" class="mx-auto"> <!-- Vote card -->
-      <v-img class="align-center" :src="survey.banner" height="80px">
-          <v-card-title class="justify-center">{{ survey.title }}</v-card-title>
-      </v-img>
-      <v-card-text class="text-center">
-        <v-snackbar shaped top v-model="error" timeout="3000">
-          Desculpe, ocorreu um erro...
-        </v-snackbar>
-        <p class="body-2 mt-4">
+      <template v-if="survey.banner && survey.banner.length > 0">
+        <v-img class="align-center" :src="survey.banner" height="70px"></v-img>
+        <v-card-title class="justify-center">{{ survey.title }}</v-card-title>
+        <p class="body-2 text-center">
           {{ survey.description }}
         </p>
+      </template>
+      <template v-else>
+        <v-card-title class="justify-center primary">{{ survey.title }}</v-card-title>
+         <p class="body-2 mt-4 text-center">
+          {{ survey.description }}
+        </p>
+      </template>
+      <v-card-text class="text-center">
+        <v-snackbar shaped top v-model="error" timeout="3000" app>
+          Desculpe, ocorreu um erro...
+        </v-snackbar>
         <v-row justify="center" align="center">
           <v-col cols="4"></v-col>
           <v-col cols="4" md="2" sm="2" xm="2">

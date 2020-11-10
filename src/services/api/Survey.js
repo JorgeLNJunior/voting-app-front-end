@@ -38,6 +38,20 @@ class Survey {
       }
     })
   }
+
+  async delete (id) {
+    const token = localStorage.getItem('AUTH_TOKEN')
+    return http.delete(`/surveys/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  }
+
+  async update (id, data) {
+    const token = localStorage.getItem('AUTH_TOKEN')
+    return http.put(`/surveys/${id}`, data, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  }
 }
 
 export default new Survey()
