@@ -23,7 +23,7 @@
               <v-text-field label="Título" prepend-icon="title" v-model="survey.title" :rules="[rules.title.required, rules.title.max]" counter="50"></v-text-field>
               <v-text-field label="Descrição" prepend-icon="description" v-model="survey.description" :rules="[rules.description.required, rules.description.max]" counter="150">
               </v-text-field>
-              <v-file-input v-model="banner" accept="image/png, image/jpeg, image/jpg" :rules="[rules.banner.required, rules.banner.max]" show-size label="Banner" prepend-icon="add_photo_alternate"></v-file-input>
+              <v-file-input v-model="banner" accept="image/png, image/jpeg, image/jpg" :rules="[rules.banner.max]" show-size label="Banner" prepend-icon="add_photo_alternate"></v-file-input>
               <v-text-field v-model.trim="insertOption.name" label="Opções" hint="Deve haver no mínimo 2 e no máximo 5 opções" prepend-icon="rule" append-icon="add" @click:append="pushOption()" v-on:keyup.enter="pushOption()" :rules="[rules.options.max]">
               </v-text-field>
             </v-col>
@@ -90,7 +90,6 @@ export default {
           value.length <= 30 || 'Deve ter no máximo 30 caracteres'
       },
       banner: {
-        required: (value) => !!value || 'Obrigatório',
         max: (value) =>
           !value || value.size <= 2000000 || 'Deve ter no máximo 2MB'
       }
@@ -126,17 +125,24 @@ export default {
         .then((response) => {
           this.responseData = response.data
 
-          Survey.uploadBanner(response.data.survey.id, this.banner)
-            .then((response) => {
-              this.states.snackBar.msg = 'Enquete criada com sucesso'
-              this.states.snackBar.active = true
+          if (this.banner) {
+            Survey.uploadBanner(response.data.survey.id, this.banner)
+              .then((response) => {
+                this.states.snackBar.msg = 'Enquete criada com sucesso'
+                this.states.snackBar.active = true
 
-              this.states.destroyCard = true
-            }
-            )
-            .finally(() => {
-              this.states.submitBtnLoad = false
-            })
+                this.states.destroyCard = true
+              }
+              )
+              .finally(() => {
+                this.states.submitBtnLoad = false
+              })
+          } else {
+            this.states.snackBar.msg = 'Enquete criada com sucesso'
+            this.states.snackBar.active = true
+            this.states.destroyCard = true
+            this.states.submitBtnLoad = false
+          }
         })
         .catch((error) => {
           console.log(error)
