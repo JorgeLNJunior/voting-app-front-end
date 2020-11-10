@@ -10,14 +10,13 @@
       </v-card>
     </v-dialog>
     <v-card shaped elevation="6" class="mx-auto"> <!-- Vote card -->
-      <v-img class="align-center" :src="survey.banner" height="80px">
-          <v-card-title class="justify-center">{{ survey.title }}</v-card-title>
-      </v-img>
+      <v-img v-if="survey.banner || survey.banner.length > 0" class="align-center" :src="survey.banner" height="70px"></v-img>
+      <v-card-title class="justify-center">{{ survey.title }}</v-card-title>
       <v-card-text class="text-center">
         <v-snackbar shaped top v-model="error" timeout="3000">
           Desculpe, ocorreu um erro...
         </v-snackbar>
-        <p class="body-2 mt-4">
+        <p class="body-2">
           {{ survey.description }}
         </p>
         <v-row justify="center" align="center">
