@@ -24,7 +24,6 @@
       </v-row>
       <v-row v-else align="center" justify="center"> <!-- unauthenticated user -->
         <v-col cols="8" class="text-center">
-          <h1 class="mb-6">Entre com uma conta para ver suas informações aqui!</h1>
           <RamdomSurveysCard />
         </v-col>
       </v-row>
