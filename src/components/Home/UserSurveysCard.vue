@@ -19,9 +19,16 @@
                 <v-list-item-action-text></v-list-item-action-text>
                 <v-row>
                   <router-link :to="{ name: 'SurveyShow', params: { id: s.id} }" target="_blank">
-                    <v-btn color="primary mr-2">Ver</v-btn>
+                    <v-btn color="primary mr-2" small>
+                      Ver
+                      <v-icon right>visibility</v-icon>
+                    </v-btn>
                   </router-link>
-                  <v-btn color="error" @click="deleteSurvey(s.id)" :loading="states.deleteBtnLoad">Excluir</v-btn>
+                  <SurveyUpdateDialog :surveyId="s.id" />
+                  <v-btn color="error" @click="deleteSurvey(s.id)" :loading="states.deleteBtnLoad" small>
+                    Excluir
+                    <v-icon right>delete</v-icon>
+                  </v-btn>
                 </v-row>
               </v-list-item-action>
             </v-list-item>
@@ -39,15 +46,21 @@
 import Survey from '../../services/api/Survey'
 import Decode from 'jwt-decode'
 
+import SurveyUpdateDialog from '../Survey/SurveyUpdateDialog'
+
 export default {
   name: 'UserSurveysCard',
+  components: {
+    SurveyUpdateDialog
+  },
   data: () => ({
     surveys: [],
     apiCallEnded: false,
     userSurveys: [],
     states: {
       userSurveysCallEnded: false,
-      deleteBtnLoad: false
+      deleteBtnLoad: false,
+      updateBtnLoad: false
     }
   }),
   created () {
