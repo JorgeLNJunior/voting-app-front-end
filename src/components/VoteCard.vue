@@ -25,7 +25,7 @@
           <v-col cols="4" md="2" sm="2" xm="2">
             <v-switch v-for="option in survey.options" :key="option.id" :label="option.name"
               v-model="option.selected" :disabled="!option.ableToSelect"
-              v-on:change="disableSelection(option.id)" hide-details>
+              v-on:change="disableOptionsController(option.id)" hide-details>
             </v-switch>
           </v-col>
           <v-col cols="4"></v-col>
@@ -88,11 +88,25 @@ export default {
     })
   },
   methods: {
-    disableSelection (inputID) {
+
+    disableOptionsController (inputID) {
       this.survey.options.forEach(option => {
-        if (option.id !== inputID) {
-          option.ableToSelect = false
-          this.disableBlockBtn = false
+        if (option.id === inputID) {
+          if (option.selected) {
+            this.survey.options.forEach(o => {
+              if (o.id !== inputID) {
+                o.ableToSelect = false
+                this.disableBlockBtn = false
+              }
+            })
+          } else {
+            this.survey.options.forEach(o => {
+              if (o.id !== inputID) {
+                o.ableToSelect = true
+                this.disableBlockBtn = true
+              }
+            })
+          }
         }
       })
     },
