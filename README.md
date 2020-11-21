@@ -13,7 +13,7 @@ do repositório [App Ideas](https://github.com/florinpop17/app-ideas).
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/JorgeLNJunior/voting-app-front-end)](https://github.com/JorgeLNJunior/voting-app-front-end/blob/master/LICENSE.md)
+[![License](https://img.shields.io/github/license/JorgeLNJunior/voting-app-front-end?color=lgreen)](https://github.com/JorgeLNJunior/voting-app-front-end/blob/master/LICENSE.md)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Release](https://img.shields.io/github/v/release/JorgeLNJunior/voting-app-front-end?color=lgreen)](https://github.com/JorgeLNJunior/voting-app-front-end/releases)
 
@@ -23,7 +23,7 @@ do repositório [App Ideas](https://github.com/florinpop17/app-ideas).
 
 [Frontend](https://github.com/JorgeLNJunior/voting-app-front-end/) · [Backend](https://github.com/JorgeLNJunior/voting-app-back-end/)
 
-[**APP »**](http://voting-app-site.netlify.site)
+[**APP »**](http://voting-app-site.netlify.app)
 
 </div>
 
