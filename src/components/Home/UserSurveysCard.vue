@@ -18,12 +18,10 @@
               <v-list-item-action>
                 <v-list-item-action-text></v-list-item-action-text>
                 <v-row>
-                  <router-link :to="{ name: 'SurveyShow', params: { id: s.id} }" target="_blank">
-                    <v-btn color="primary mr-2" small>
+                    <v-btn color="primary mr-2" small :to="{ name: 'SurveyShow', params: { id: s.id} }" target="_blank">
                       Ver
                       <v-icon right>visibility</v-icon>
                     </v-btn>
-                  </router-link>
                   <SurveyUpdateDialog :surveyId="s.id" />
                   <v-btn color="error" @click="deleteSurvey(s.id)" :loading="states.deleteBtnLoad" small>
                     Excluir
