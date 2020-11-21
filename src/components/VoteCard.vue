@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-dialog v-model="dialog" width="600"> <!-- Auth warning dialog -->
+    <v-dialog v-model="dialog" width="600">
+      <!-- Auth warning dialog -->
       <v-card>
         <v-card-title class="justify-center">Autenticação</v-card-title>
         <v-divider></v-divider>
@@ -9,7 +10,8 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-    <v-card shaped elevation="6" class="mx-auto"> <!-- Vote card -->
+    <v-card shaped elevation="6" class="mx-auto">
+      <!-- Vote card -->
       <template v-if="survey.banner && survey.banner.length > 0">
         <v-img class="align-center" :src="survey.banner" height="70px"></v-img>
         <v-card-title class="justify-center">{{ survey.title }}</v-card-title>
@@ -19,7 +21,7 @@
       </template>
       <template v-else>
         <v-card-title class="justify-center primary">{{ survey.title }}</v-card-title>
-         <p class="body-2 mt-4 text-center">
+        <p class="body-2 mt-4 text-center">
           {{ survey.description }}
         </p>
       </template>
@@ -28,18 +30,15 @@
           Desculpe, ocorreu um erro...
         </v-snackbar>
         <v-row justify="center" align="center">
-          <v-col cols="4"></v-col>
-          <v-col cols="4" md="2" sm="2" xm="2">
-            <v-switch v-for="option in survey.options" :key="option.id" :label="option.name"
-              v-model="option.selected" :disabled="!option.ableToSelect"
-              v-on:change="disableOptionsController(option.id)" hide-details>
+          <v-col cols="4">
+            <v-switch class="ml-8" v-for="option in survey.options" :key="option.id" :label="option.name" v-model="option.selected" :disabled="!option.ableToSelect" v-on:change="disableOptionsController(option.id)" hide-details>
             </v-switch>
           </v-col>
-          <v-col cols="4"></v-col>
-          <v-col cols="12" md="5" sm="7" xm="9">
-            <p>Selecione somente uma opção</p>
-            <v-btn color="primary" block rounded
-              @click="vote()" :disabled="disableBlockBtn || voted" :loading="btnLoading">
+        </v-row>
+        <v-row align="center" justify="center">
+          <v-col cols="4">
+            <p>{{ bottomMsg }}</p>
+            <v-btn color="primary" block rounded @click="vote()" :disabled="disableBlockBtn || voted" :loading="btnLoading">
               Votar
             </v-btn>
             <v-btn icon class="mt-3" v-show="voted && !show" @click="show = true">
@@ -83,16 +82,31 @@ export default {
     btnLoading: false,
     voted: false,
     error: false,
-    dialog: false
+    dialog: false,
+    bottomMsg: 'Selecione somente uma opção'
   }),
   props: {
-    survey: Object
+    survey: Object,
+    userVotes: Array
   },
   created () {
     this.survey.options.forEach(option => {
       option.selected = false
       option.ableToSelect = true
     })
+    if (this.userVotes.length > 0) {
+      this.userVotes.forEach(vote => {
+        if (vote.survey_id == this.survey.id) { // eslint-disable-line
+          this.voted = true
+          this.sortOptions()
+          this.bottomMsg = 'Você já votou nesta enquete'
+          this.survey.options.forEach(option => {
+          if (vote.option_id == option.id) option.selected = true // eslint-disable-line
+            option.ableToSelect = false
+          })
+        }
+      })
+    }
   },
   methods: {
 
