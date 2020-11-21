@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Decode from 'jwt-decode'
-import isAfter from 'date-fns/isAfter'
+import { isAfter, parseISO } from 'date-fns'
 
 Vue.use(VueRouter)
 
@@ -38,7 +38,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (localStorage.getItem('AUTH_TOKEN')) {
     const decode = Decode(localStorage.getItem('AUTH_TOKEN'))
-    if (isAfter(Date.now(), decode.expiresIn)) {
+    if (isAfter(Date.now(), parseISO(decode.expiresIn))) {
       localStorage.removeItem('AUTH_TOKEN')
     }
     next()

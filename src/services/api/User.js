@@ -26,6 +26,13 @@ class User {
       }
     })
   }
+
+  async getVotes (userId) {
+    const token = localStorage.getItem('AUTH_TOKEN')
+    return await http.get(`/users/${userId}/votes`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  }
 }
 
 export default new User()
