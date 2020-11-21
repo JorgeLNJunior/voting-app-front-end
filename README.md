@@ -6,60 +6,88 @@
 
 <div align="center">
 
+Aplicação de enquetes feita com base no [Voting App](https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Voting-App.md)
+do repositório [App Ideas](https://github.com/florinpop17/app-ideas).
+
+</div>
+
+<div align="center">
+
 [![License](https://img.shields.io/github/license/JorgeLNJunior/voting-app-front-end)](https://github.com/JorgeLNJunior/voting-app-front-end/blob/master/LICENSE.md)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Release](https://img.shields.io/github/v/release/JorgeLNJunior/voting-app-front-end?color=lgreen)](https://github.com/JorgeLNJunior/voting-app-front-end/releases)
 
 </div>
 
 <div align="center">
 
-[Frontend](https://github.com/JorgeLNJunior/voting-app-front-end/) | [Backend](https://github.com/JorgeLNJunior/voting-app-back-end/)
+[Frontend](https://github.com/JorgeLNJunior/voting-app-front-end/) · [Backend](https://github.com/JorgeLNJunior/voting-app-back-end/)
+
+[**APP »**](http://voting-app-site.netlify.site)
 
 </div>
 
+## Tabela de Conteúdos
+- [Sobre o Projeto](https://github.com/JorgeLNJunior/voting-app-front-end#sobre-o-projeto)
+- [Screenshots](https://github.com/JorgeLNJunior/voting-app-front-end#screenshots)
+- [Tecnologias](https://github.com/JorgeLNJunior/voting-app-front-end#tecnologias)
+- [Instalação e configuração](https://github.com/JorgeLNJunior/voting-app-front-end#instala%C3%A7%C3%A3o-e-configura%C3%A7%C3%A3o)
+  - [Requisitos](https://github.com/JorgeLNJunior/voting-app-front-end#requisitos)
+  - [Instalação](https://github.com/JorgeLNJunior/voting-app-front-end#instala%C3%A7%C3%A3o)
+- [CheckList](https://github.com/JorgeLNJunior/voting-app-front-end#checklist)
+  - [User stories](https://github.com/JorgeLNJunior/voting-app-front-end#user-stories)
+  - [Bônus Features](https://github.com/JorgeLNJunior/voting-app-front-end#bonus-features)
+- [Licença](https://github.com/JorgeLNJunior/voting-app-front-end#licen%C3%A7a)
+
+## Sobre o Projeto
+Aplicação de enquetes onde é possível criar, compartilhar e gerenciar enquetes.
+Feita com base no [**Voting App »**](https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Voting-App.md) do repositório [**App Ideas »**](https://github.com/florinpop17/app-ideas) com o propósito de praticar e aprender tecnologias como Jest, TDD, CI/CD, criação de API's REST, Azure, Knex.js, entre outros. Para mais informações como diagramas, planejamento e futuras funcionalidades visite o [**quadro Trello »**](https://trello.com/b/YacYdWhy/voting-app) deste projeto.
+
+## Screenshots
 <div align="center">
 
-Aplicação feita com base no [Voting App](https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Voting-App.md)
-do repositório [app-ideas](https://github.com/florinpop17/app-ideas). Para mais informações acesse o seu respectivo [quadro trello](https://trello.com/b/YacYdWhy/voting-app).
+<img src="https://i.imgur.com/iDOVTuf.png" width="400" />
+
+<img src="https://i.imgur.com/bfGNQoS.png" width="400" />
+
+<img src="https://i.imgur.com/Zt6FPAw.png" width="400" />
+
+<img src="https://i.imgur.com/QZVxIYk.png" width="400" />
+
+<img src="https://i.imgur.com/urNklVI.png" width="300" />
 
 </div>
 
 ## Tecnologias
-- A fazer
+Este projeto foi construído com as seguintes tecnologias:
+
+- [**Node.js »**](https://nodejs.org)
+- [**Vue.js »**](https://vuejs.org)
+- [**Vuetify.js »**](https://vuetifyjs.com)
 
 ## Instalação e configuração
-- Requerimentos
-  - [Node.js](https://nodejs.org/en/download/) na sua versão LTS
-  - [Vue.js](https://vuejs.org/v2/guide/installation.html) na sua versão 2.x
-  - [Servidor da aplicação](https://github.com/JorgeLNJunior/voting-app-back-end/) rodando na porta 3000
+### Requisitos
+  - [**Node.js »**](https://nodejs.org/en/download/) na sua versão 12.x
+  - [**Vue.js »**](https://vuejs.org/v2/guide/installation.html) na sua versão 2.x
+  - [**Servidor da aplicação »**](https://github.com/JorgeLNJunior/voting-app-back-end/) rodando na porta 3000
 
-- Instalação
+### Instalação
   - Clone o projeto: `git clone https://github.com/JorgeLNJunior/voting-app-front-end.git`
-  - Entre no diretório do projeto: `cd voting-app-front-end`
-  - Abra o projeto no VSCode: `code .`
   - Instale as dependências: `npm i`
   - Inicie a aplicação com o comando `npm run serve`
 
-## Screenshots
-<div>
-
-<img src="https://i.imgur.com/zjmRrgc.png" width="300" />
-<img src="https://i.imgur.com/Sg74jl9.png" width="300" />
-<img src="https://i.imgur.com/2MURzwG.png" width="300" />
-<img src="https://i.imgur.com/Tg9DOrc.png" width="300" />
-<img src="https://i.imgur.com/8NL1xTa.png" width="300" />
-<img src="https://i.imgur.com/EsZqUej.png" width="300" />
-
-</div>
-
-## User Stories
+## CheckList
+### User Stories
 
 - [x] User can see a list of items he can vote on
 - [x] These items must have a button that the user can click on to vote
 - [x] After the user clicked a button, the user should see all the votes
 
-## Bonus features
+### Bonus features
 
 - [x] Store items and votes in a database
 - [x] Only allow authenticated users to vote
+
+## Licença
+Projeto sob a licença [**MIT »**](https://github.com/JorgeLNJunior/voting-app-back-end/blob/master/LICENSE.md)
  
